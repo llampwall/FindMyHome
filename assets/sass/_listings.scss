@@ -1,0 +1,39 @@
+@import "variables";
+
+header {
+  background: $purple;
+  color: white;
+  overflow: auto;
+  padding: 15px;
+  font-size: 1rem;
+
+  .logo {
+    float: left;
+    font-size: 1.5rem;
+    font-weight: 100;
+  }
+
+  nav {
+    float: right;
+    position: relative;
+    top: 5px;
+
+    a {
+      color: white;
+      text-decoration: none;
+      padding: 0 20px;
+
+      &:hover {
+        color: $salmon;
+      }
+
+      &.register-btn {
+        background: $salmon;
+        padding: 5px 20px;
+        text-align: center;
+        border-radius: 5px;
+        color: white;
+      }
+    }
+  }
+}
