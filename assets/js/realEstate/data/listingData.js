@@ -41,7 +41,7 @@ var listingData = [
     price: 112000,
     sqft: 1200,
     extras: ['basement'],
-    img: 'https://architecturebeast.com/wp-content/uploads/2014/08/Top_50_Modern_House_Designs_Ever_Built_featured_on_architecture_beast_03.jpg'
+    img: 'https://d2cc5bro5bu049.cloudfront.net/65901/26741337/large.jpg'
   },
   {
     address: '833 Tyburn Rd',
@@ -52,7 +52,7 @@ var listingData = [
     price: 450000,
     sqft: 3000,
     extras: ['pool', 'gym', 'basement'],
-    img: 'https://www.theplancollection.com/Upload/Designers/175/1073/Plan1751073MainImage_11_6_2015_13_891_593.jpg'
+    img: 'https://cdn.homedit.com/wp-content/uploads/2018/08/Mediterranean-Style-Decor-Exterior.jpg'
   },
   {
     address: '49 Bank St',

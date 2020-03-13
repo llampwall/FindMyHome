@@ -6,7 +6,8 @@ export default class Listings extends Component {
     this.state = {
       name: 'Joe'
     }
-    this.loopListings = this.loopListings.bind(this);
+    this.loopListings = this.loopListings.bind(this)
+    this.displayListing = this.displayListing.bind(this)
   }
 
   loopListings () {
@@ -20,7 +21,7 @@ export default class Listings extends Component {
 
       if (this.props.globalState.view == 'box') {
 
-        //NORMAL BOX VIEW
+        // NORMAL BOX VIEW
         return (
           <div className="col-md-3" key={index}>
             <div className="listing" >
@@ -43,20 +44,20 @@ export default class Listings extends Component {
                     </div>
                   </div>
 
-                  <div className="view-btn">
+                  <div className="view-btn" onClick={this.props.changeView.bind(null, listing)}>
                     View Listing
                   </div>
                 </div>
               </div>
               <div className="bottom-info">
-                <span className="price">${listing.price}</span>
+                <span className="price">${new Intl.NumberFormat().format(listing.price)}</span>
                 <span className="area"><i className="fa fa-map-marker" aria-hidden="true"></i> {listing.city} {listing.state}</span>
               </div>
             </div>
           </div>
         )
 
-      } else {
+      } else if (this.props.globalState.view == 'long') {
 
         // WIDE VIEW
         return (
@@ -81,13 +82,13 @@ export default class Listings extends Component {
                     </div>
                   </div>
 
-                  <div className="view-btn">
+                  <div className="view-btn" onClick={this.props.changeView.bind(null, listing)}>
                     View Listing
                   </div>
                 </div>
               </div>
               <div className="bottom-info">
-                <span className="price">${listing.price}</span>
+                <span className="price">${new Intl.NumberFormat().format(listing.price)}</span>
                 <span className="area"><i className="fa fa-map-marker" aria-hidden="true"></i> {listing.city} {listing.state}</span>
               </div>
             </div>
@@ -97,54 +98,115 @@ export default class Listings extends Component {
     })
   }
 
+  displayListing(listing) {
+  return (
+    <section id="listings">
 
-  render () {
-    return (
-      <section id="listings">
+      <section className="search-area">
+        <input type="text" name="search" placeholder="Search..." onChange={this.props.change}/>
+      </section>
 
-        <section className="search-area">
-          <input type="text" name="search" placeholder="Search..." onChange={this.props.change}/>
-        </section>
+      <section className="sortby-area">
+        <div className="resultnum">{this.props.listingData.length} results found</div>
 
-        <section className="sortby-area">
-          <div className="resultnum">{this.props.listingData.length} results found</div>
+        <div className="sort-options">
+          <select name="sortby" className="sortby" onChange={this.props.change}>
+            <option value="price-asc">Lowest Price</option>
+            <option value="price-dsc">Highest Price</option>
+          </select>
 
-          <div className="sort-options">
-            <select name="sortby" className="sortby" onChange={this.props.change}>
-              <option value="price-asc">Lowest Price</option>
-              <option value="price-dsc">Highest Price</option>
-            </select>
-
-            <div className="view">
-              <i className="fa fa-th-list" aria-hidden="true" onClick={this.props.changeView.bind(null, "long")}></i>
-              <i className="fa fa-th" aria-hidden="true" onClick={this.props.changeView.bind(null, "box")}></i>
-            </div>
+          <div className="view">
+            <i className="fa fa-th-list" aria-hidden="true" onClick={this.props.changeView.bind(null, "long")}></i>
+            <i className="fa fa-th" aria-hidden="true" onClick={this.props.changeView.bind(null, "box")}></i>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="results">
+      <div className="listingView">
+        <div className="title">{listing.address}, {listing.city}, {listing.state}</div>
 
-        <div className="row">
-          {this.loopListings()}
+        <div className="price">${new Intl.NumberFormat().format(listing.price)}</div>
+
+        <div className="image">
+          <img src={listing.img} />
         </div>
 
-        </section>
+        <div className="details">
+          <ul>
+            <li>{listing.homeType}</li>
+            <li>{listing.rooms} bedrooms</li>
+            <li>{listing.sqft}ft&sup2;</li>
+            <li>{listing.extras.join(', ')}</li>
+          </ul>
+        </div>
 
-        <section id="pagination">
-          <div className="row">
-            <ul className="numbers">
-              <li>Prev</li>
-              <li className="active">1</li>
-              <li>2</li>
-              <li>3</li>
-              <li>4</li>
-              <li>5</li>
-              <li>Next</li>
-            </ul>
+        <div className="row">
+          <div className="return-btn" onClick={this.props.changeView.bind(null, 'box')}>
+            Return
           </div>
-        </section>
+        </div>
+      </div>
+    </section>
+  )
+}
 
-      </section>
-    )
+  render () {
+    if (this.props.globalState.view != 'box' && this.props.globalState.view != 'long') {
+
+      // DISPLAY LISTING
+      return this.displayListing(this.props.globalState.view)
+
+
+    } else {
+
+      // DISPLAY ALL
+      return (
+        <section id="listings">
+
+          <section className="search-area">
+            <input type="text" name="search" placeholder="Search..." onChange={this.props.change}/>
+          </section>
+
+          <section className="sortby-area">
+            <div className="resultnum">{this.props.listingData.length} results found</div>
+
+            <div className="sort-options">
+              <select name="sortby" className="sortby" onChange={this.props.change}>
+                <option value="price-asc">Lowest Price</option>
+                <option value="price-dsc">Highest Price</option>
+              </select>
+
+              <div className="view">
+                <i className="fa fa-th-list" aria-hidden="true" onClick={this.props.changeView.bind(null, "long")}></i>
+                <i className="fa fa-th" aria-hidden="true" onClick={this.props.changeView.bind(null, "box")}></i>
+              </div>
+            </div>
+          </section>
+
+          <section className="results">
+
+          <div className="row">
+            {this.loopListings()}
+          </div>
+
+          </section>
+
+          <section id="pagination">
+            <div className="row">
+              <ul className="numbers">
+                <li>Prev</li>
+                <li className="active">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>Next</li>
+              </ul>
+            </div>
+          </section>
+
+        </section>
+      )
+    }
   }
 }

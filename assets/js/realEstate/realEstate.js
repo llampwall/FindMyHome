@@ -60,6 +60,7 @@ class App extends Component {
     })
   }
 
+  //view change button
   changeView(viewName) {
 
     this.setState({

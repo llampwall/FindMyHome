@@ -75,14 +75,14 @@ export default class Filter extends Component {
 
           <div className="filters price">
             <span className="title">Price</span>
-            <input type="text" name="min_price" className="min_price" placeholder="min" onChange={this.props.change} value={this.props.globalState.min_price}/>
-            <input type="text" name="max_price" className="max_price" placeholder="max" onChange={this.props.change} value={this.props.globalState.max_price}/>
+            <input type="text" name="min_price" className="min_price" onChange={this.props.change} value={this.props.globalState.min_price}/>
+            <input type="text" name="max_price" className="max_price" onChange={this.props.change} value={this.props.globalState.max_price}/>
           </div>
 
           <div className="filters floor-space">
             <span className="title">Floor Space</span>
-            <input type="text" name="min_sqft" className="min_sqft" placeholder='min' onChange={this.props.change} value={this.props.globalState.min_sqft}/>
-            <input type="text" name="max_sqft" className="max_sqft" placeholder='max' onChange={this.props.change} value={this.props.globalState.max_sqft}/>
+            <input type="text" name="min_sqft" className="min_sqft" onChange={this.props.change} value={this.props.globalState.min_sqft}/>
+            <input type="text" name="max_sqft" className="max_sqft" onChange={this.props.change} value={this.props.globalState.max_sqft}/>
           </div>
 
           <div className="filters extras">

@@ -163,8 +163,8 @@ var Filter = function (_Component) {
               { className: 'title' },
               'Price'
             ),
-            _react2.default.createElement('input', { type: 'text', name: 'min_price', className: 'min_price', placeholder: 'min', onChange: this.props.change, value: this.props.globalState.min_price }),
-            _react2.default.createElement('input', { type: 'text', name: 'max_price', className: 'max_price', placeholder: 'max', onChange: this.props.change, value: this.props.globalState.max_price })
+            _react2.default.createElement('input', { type: 'text', name: 'min_price', className: 'min_price', onChange: this.props.change, value: this.props.globalState.min_price }),
+            _react2.default.createElement('input', { type: 'text', name: 'max_price', className: 'max_price', onChange: this.props.change, value: this.props.globalState.max_price })
           ),
           _react2.default.createElement(
             'div',
@@ -174,8 +174,8 @@ var Filter = function (_Component) {
               { className: 'title' },
               'Floor Space'
             ),
-            _react2.default.createElement('input', { type: 'text', name: 'min_sqft', className: 'min_sqft', placeholder: 'min', onChange: this.props.change, value: this.props.globalState.min_sqft }),
-            _react2.default.createElement('input', { type: 'text', name: 'max_sqft', className: 'max_sqft', placeholder: 'max', onChange: this.props.change, value: this.props.globalState.max_sqft })
+            _react2.default.createElement('input', { type: 'text', name: 'min_sqft', className: 'min_sqft', onChange: this.props.change, value: this.props.globalState.min_sqft }),
+            _react2.default.createElement('input', { type: 'text', name: 'max_sqft', className: 'max_sqft', onChange: this.props.change, value: this.props.globalState.max_sqft })
           ),
           _react2.default.createElement(
             'div',
@@ -363,6 +363,7 @@ var Listings = function (_Component) {
       name: 'Joe'
     };
     _this.loopListings = _this.loopListings.bind(_this);
+    _this.displayListing = _this.displayListing.bind(_this);
     return _this;
   }
 
@@ -382,7 +383,7 @@ var Listings = function (_Component) {
 
         if (_this2.props.globalState.view == 'box') {
 
-          //NORMAL BOX VIEW
+          // NORMAL BOX VIEW
           return _react2.default.createElement(
             'div',
             { className: 'col-md-3', key: index },
@@ -443,7 +444,7 @@ var Listings = function (_Component) {
                   ),
                   _react2.default.createElement(
                     'div',
-                    { className: 'view-btn' },
+                    { className: 'view-btn', onClick: _this2.props.changeView.bind(null, listing) },
                     'View Listing'
                   )
                 )
@@ -455,7 +456,7 @@ var Listings = function (_Component) {
                   'span',
                   { className: 'price' },
                   '$',
-                  listing.price
+                  new Intl.NumberFormat().format(listing.price)
                 ),
                 _react2.default.createElement(
                   'span',
@@ -469,7 +470,7 @@ var Listings = function (_Component) {
               )
             )
           );
-        } else {
+        } else if (_this2.props.globalState.view == 'long') {
 
           // WIDE VIEW
           return _react2.default.createElement(
@@ -532,7 +533,7 @@ var Listings = function (_Component) {
                   ),
                   _react2.default.createElement(
                     'div',
-                    { className: 'view-btn' },
+                    { className: 'view-btn', onClick: _this2.props.changeView.bind(null, listing) },
                     'View Listing'
                   )
                 )
@@ -544,7 +545,7 @@ var Listings = function (_Component) {
                   'span',
                   { className: 'price' },
                   '$',
-                  listing.price
+                  new Intl.NumberFormat().format(listing.price)
                 ),
                 _react2.default.createElement(
                   'span',
@@ -562,8 +563,8 @@ var Listings = function (_Component) {
       });
     }
   }, {
-    key: 'render',
-    value: function render() {
+    key: 'displayListing',
+    value: function displayListing(listing) {
       return _react2.default.createElement(
         'section',
         { id: 'listings' },
@@ -607,62 +608,180 @@ var Listings = function (_Component) {
           )
         ),
         _react2.default.createElement(
-          'section',
-          { className: 'results' },
+          'div',
+          { className: 'listingView' },
           _react2.default.createElement(
             'div',
-            { className: 'row' },
-            this.loopListings()
-          )
-        ),
-        _react2.default.createElement(
-          'section',
-          { id: 'pagination' },
+            { className: 'title' },
+            listing.address,
+            ', ',
+            listing.city,
+            ', ',
+            listing.state
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'price' },
+            '$',
+            new Intl.NumberFormat().format(listing.price)
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'image' },
+            _react2.default.createElement('img', { src: listing.img })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'details' },
+            _react2.default.createElement(
+              'ul',
+              null,
+              _react2.default.createElement(
+                'li',
+                null,
+                listing.homeType
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                listing.rooms,
+                ' bedrooms'
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                listing.sqft,
+                'ft\xB2'
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                listing.extras.join(', ')
+              )
+            )
+          ),
           _react2.default.createElement(
             'div',
             { className: 'row' },
             _react2.default.createElement(
-              'ul',
-              { className: 'numbers' },
-              _react2.default.createElement(
-                'li',
-                null,
-                'Prev'
-              ),
-              _react2.default.createElement(
-                'li',
-                { className: 'active' },
-                '1'
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                '2'
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                '3'
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                '4'
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                '5'
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                'Next'
-              )
+              'div',
+              { className: 'return-btn', onClick: this.props.changeView.bind(null, 'box') },
+              'Return'
             )
           )
         )
       );
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      if (this.props.globalState.view != 'box' && this.props.globalState.view != 'long') {
+
+        // DISPLAY LISTING
+        return this.displayListing(this.props.globalState.view);
+      } else {
+
+        // DISPLAY ALL
+        return _react2.default.createElement(
+          'section',
+          { id: 'listings' },
+          _react2.default.createElement(
+            'section',
+            { className: 'search-area' },
+            _react2.default.createElement('input', { type: 'text', name: 'search', placeholder: 'Search...', onChange: this.props.change })
+          ),
+          _react2.default.createElement(
+            'section',
+            { className: 'sortby-area' },
+            _react2.default.createElement(
+              'div',
+              { className: 'resultnum' },
+              this.props.listingData.length,
+              ' results found'
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'sort-options' },
+              _react2.default.createElement(
+                'select',
+                { name: 'sortby', className: 'sortby', onChange: this.props.change },
+                _react2.default.createElement(
+                  'option',
+                  { value: 'price-asc' },
+                  'Lowest Price'
+                ),
+                _react2.default.createElement(
+                  'option',
+                  { value: 'price-dsc' },
+                  'Highest Price'
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'view' },
+                _react2.default.createElement('i', { className: 'fa fa-th-list', 'aria-hidden': 'true', onClick: this.props.changeView.bind(null, "long") }),
+                _react2.default.createElement('i', { className: 'fa fa-th', 'aria-hidden': 'true', onClick: this.props.changeView.bind(null, "box") })
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'section',
+            { className: 'results' },
+            _react2.default.createElement(
+              'div',
+              { className: 'row' },
+              this.loopListings()
+            )
+          ),
+          _react2.default.createElement(
+            'section',
+            { id: 'pagination' },
+            _react2.default.createElement(
+              'div',
+              { className: 'row' },
+              _react2.default.createElement(
+                'ul',
+                { className: 'numbers' },
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  'Prev'
+                ),
+                _react2.default.createElement(
+                  'li',
+                  { className: 'active' },
+                  '1'
+                ),
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  '2'
+                ),
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  '3'
+                ),
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  '4'
+                ),
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  '5'
+                ),
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  'Next'
+                )
+              )
+            )
+          )
+        );
+      }
     }
   }]);
 
@@ -721,7 +840,7 @@ var listingData = [{
   price: 112000,
   sqft: 1200,
   extras: ['basement'],
-  img: 'https://architecturebeast.com/wp-content/uploads/2014/08/Top_50_Modern_House_Designs_Ever_Built_featured_on_architecture_beast_03.jpg'
+  img: 'https://d2cc5bro5bu049.cloudfront.net/65901/26741337/large.jpg'
 }, {
   address: '833 Tyburn Rd',
   city: 'Palos Verdes Estates',
@@ -731,7 +850,7 @@ var listingData = [{
   price: 450000,
   sqft: 3000,
   extras: ['pool', 'gym', 'basement'],
-  img: 'https://www.theplancollection.com/Upload/Designers/175/1073/Plan1751073MainImage_11_6_2015_13_891_593.jpg'
+  img: 'https://cdn.homedit.com/wp-content/uploads/2018/08/Mediterranean-Style-Decor-Exterior.jpg'
 }, {
   address: '49 Bank St',
   city: 'Troy',
@@ -914,6 +1033,9 @@ var App = function (_Component) {
         _this2.filteredData();
       });
     }
+
+    //view change button
+
   }, {
     key: 'changeView',
     value: function changeView(viewName) {
