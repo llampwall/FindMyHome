@@ -1030,6 +1030,7 @@ var App = function (_Component) {
 
       this.setState(_defineProperty({}, name, value), function () {
         console.log(name);
+        _this2.changeView('box');
         _this2.filteredData();
       });
     }

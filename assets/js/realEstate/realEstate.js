@@ -56,6 +56,7 @@ class App extends Component {
       [name]: value
     }, () => {
       console.log(name)
+      this.changeView('box')
       this.filteredData()
     })
   }
