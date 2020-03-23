@@ -36,7 +36,6 @@ class App extends Component {
     this.changeView = this.changeView.bind(this)
   }
 
-
   componentWillMount() {
     var listingdata = this.state.listingData.sort((a, b) => {
       return a.price - b.price

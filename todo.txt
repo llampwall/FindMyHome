@@ -1,0 +1,52 @@
+
+fix price and floor space display
+
+mobile responsiveness
+
+add support for multiple listing images in json
+
+style listing view better
+  display image gallery
+  contact/offer button
+
+make views modular components
+
+web scraper to populate data
+
+make pagination functional
+  split data into pages
+  dynamically change numbers based on current page
+
+search by zip / city
+  make city tags clickable
+
+map view
+
+header menu functionality
+  create listing view
+  about us view
+  user registration/login
+
+backend
+  laravel/ruby/node?
+  server
+  sql database
+  admin area
+
+consumer functions
+  save/favorite
+  social media link
+  email blasts
+  customer service
+
+realtor functions
+  notifications of viewing/offers
+  picture/bio upload
+
+final design overhaul
+
+real launch
+  domain name
+  hosting
+  seo
+  advertising

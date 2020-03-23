@@ -47,6 +47,9 @@ var Filter = function (_Component) {
     value: function componentWillMount() {
       this.props.populateForms();
     }
+
+    //populate city selector from data
+
   }, {
     key: 'cities',
     value: function cities() {
@@ -62,6 +65,9 @@ var Filter = function (_Component) {
         });
       }
     }
+
+    //populate home style selector from data
+
   }, {
     key: 'homeTypes',
     value: function homeTypes() {
@@ -80,6 +86,9 @@ var Filter = function (_Component) {
         });
       }
     }
+
+    //populate bedroom selector from data
+
   }, {
     key: 'bedrooms',
     value: function bedrooms() {
@@ -163,8 +172,8 @@ var Filter = function (_Component) {
               { className: 'title' },
               'Price'
             ),
-            _react2.default.createElement('input', { type: 'text', name: 'min_price', className: 'min_price', onChange: this.props.change, value: this.props.globalState.min_price }),
-            _react2.default.createElement('input', { type: 'text', name: 'max_price', className: 'max_price', onChange: this.props.change, value: this.props.globalState.max_price })
+            _react2.default.createElement('input', { type: 'text', name: 'min_price', className: 'min_price', onChange: this.props.change, defaultValue: this.props.globalState.min_price }),
+            _react2.default.createElement('input', { type: 'text', name: 'max_price', className: 'max_price', onChange: this.props.change, defaultValue: this.props.globalState.max_price })
           ),
           _react2.default.createElement(
             'div',
@@ -174,8 +183,8 @@ var Filter = function (_Component) {
               { className: 'title' },
               'Floor Space'
             ),
-            _react2.default.createElement('input', { type: 'text', name: 'min_sqft', className: 'min_sqft', onChange: this.props.change, value: this.props.globalState.min_sqft }),
-            _react2.default.createElement('input', { type: 'text', name: 'max_sqft', className: 'max_sqft', onChange: this.props.change, value: this.props.globalState.max_sqft })
+            _react2.default.createElement('input', { type: 'text', name: 'min_sqft', className: 'min_sqft', onChange: this.props.change, defaultValue: this.props.globalState.min_sqft }),
+            _react2.default.createElement('input', { type: 'text', name: 'max_sqft', className: 'max_sqft', onChange: this.props.change, defaultValue: this.props.globalState.max_sqft })
           ),
           _react2.default.createElement(
             'div',
@@ -367,6 +376,9 @@ var Listings = function (_Component) {
     return _this;
   }
 
+  //display all listings in grid
+
+
   _createClass(Listings, [{
     key: 'loopListings',
     value: function loopListings() {
@@ -386,7 +398,7 @@ var Listings = function (_Component) {
           // NORMAL BOX VIEW
           return _react2.default.createElement(
             'div',
-            { className: 'col-md-3', key: index },
+            { className: 'col-lg-3 col-md-6 col-sm-12', key: index },
             _react2.default.createElement(
               'div',
               { className: 'listing' },
@@ -475,7 +487,7 @@ var Listings = function (_Component) {
           // WIDE VIEW
           return _react2.default.createElement(
             'div',
-            { className: 'col-md-12 col-lg-6', key: index },
+            { className: 'col-sm-12 col-md-6 col-lg-6', key: index },
             _react2.default.createElement(
               'div',
               { className: 'listing' },
@@ -562,6 +574,9 @@ var Listings = function (_Component) {
         }
       });
     }
+
+    //display single listing
+
   }, {
     key: 'displayListing',
     value: function displayListing(listing) {

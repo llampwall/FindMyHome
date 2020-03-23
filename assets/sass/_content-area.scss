@@ -9,7 +9,7 @@
   background: $sidebar;
   padding: 10px;
   width: 30%;
-  height: 100vh;
+  height: 100%;
   color: #1b1b1b;
   max-width: 300px;
 
@@ -81,7 +81,7 @@
     margin-left: 15px;
 
     input[type="text"] {
-      width: 75%;
+      width: 97%;
       background: transparent;
       font-size: 2rem;
       font-weight: 100;
@@ -399,4 +399,88 @@
   // vertical-align: top;
   padding: 0 15px;
   margin-bottom: 20px;
+}
+@media only screen and (max-width: 875px) {
+  #filter .filters input[type="text"] {
+    display: block;
+    width: 90%;
+    font-size: 0.8rem;
+  }
+
+  #listings #pagination {
+    ul.numbers li {
+      padding: 10px 15px;
+    }
+  }
+}
+@media only screen and (max-width: 610px) {
+  #filter {
+    h4,
+    select {
+      font-size: 0.7rem;
+    }
+  }
+
+  #filter .filters {
+    .title {
+      font-size: 0.8rem;
+    }
+
+    input[type="text"] {
+      display: block;
+      width: 90%;
+      font-size: 0.8rem;
+      margin-bottom: 0.6rem;
+    }
+
+    &.extras {
+      margin-top: 15px;
+
+      input[type="checkbox"],
+      label {
+        font-size: 0.7rem;
+      }
+    }
+  }
+
+  #listings .sortby-area .resultnum,
+  #listings .sortby-area .sort-options select {
+    // display: none;
+    font-size: 0.8rem;
+  }
+
+  #listings .sortby-area .sort-options .view {
+    display: none;
+  }
+
+  #listings .results .listing {
+    min-width: 200px;
+
+    .bottom-info {
+      font-size: 0.7rem;
+    }
+  }
+
+  #listings .listingView {
+    .price,
+    .title {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .image img {
+      width: 200px;
+    }
+
+    .details ul {
+      margin-bottom: 10px;
+      font-size: 0.8rem;
+    }
+  }
+
+  #listings #pagination {
+    ul.numbers {
+      display: none;
+    }
+  }
 }

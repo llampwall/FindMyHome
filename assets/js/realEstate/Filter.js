@@ -1,6 +1,7 @@
 import React, { Component} from 'react'
 
 export default class Filter extends Component {
+
   constructor () {
     super()
     this.state = {
@@ -16,6 +17,7 @@ export default class Filter extends Component {
     this.props.populateForms()
   }
 
+  //populate city selector from data
   cities() {
     if (this.props.globalState.formData.cities != undefined) {
       var { cities } = this.props.globalState.formData
@@ -27,6 +29,7 @@ export default class Filter extends Component {
     }
   }
 
+  //populate home style selector from data
   homeTypes() {
     if (this.props.globalState.formData.homeTypes != undefined) {
       var { homeTypes } = this.props.globalState.formData
@@ -39,6 +42,7 @@ export default class Filter extends Component {
     }
   }
 
+  //populate bedroom selector from data
   bedrooms() {
     if (this.props.globalState.formData.bedrooms != undefined) {
       var { bedrooms } = this.props.globalState.formData
@@ -75,14 +79,14 @@ export default class Filter extends Component {
 
           <div className="filters price">
             <span className="title">Price</span>
-            <input type="text" name="min_price" className="min_price" onChange={this.props.change} value={this.props.globalState.min_price}/>
-            <input type="text" name="max_price" className="max_price" onChange={this.props.change} value={this.props.globalState.max_price}/>
+            <input type="text" name="min_price" className="min_price" onChange={this.props.change} defaultValue={this.props.globalState.min_price}/>
+            <input type="text" name="max_price" className="max_price" onChange={this.props.change} defaultValue={this.props.globalState.max_price}/>
           </div>
 
           <div className="filters floor-space">
             <span className="title">Floor Space</span>
-            <input type="text" name="min_sqft" className="min_sqft" onChange={this.props.change} value={this.props.globalState.min_sqft}/>
-            <input type="text" name="max_sqft" className="max_sqft" onChange={this.props.change} value={this.props.globalState.max_sqft}/>
+            <input type="text" name="min_sqft" className="min_sqft" onChange={this.props.change} defaultValue={this.props.globalState.min_sqft}/>
+            <input type="text" name="max_sqft" className="max_sqft" onChange={this.props.change} defaultValue={this.props.globalState.max_sqft}/>
           </div>
 
           <div className="filters extras">

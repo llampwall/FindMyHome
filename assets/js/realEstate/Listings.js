@@ -1,6 +1,7 @@
 import React, { Component} from 'react'
 
 export default class Listings extends Component {
+
   constructor () {
     super()
     this.state = {
@@ -10,6 +11,7 @@ export default class Listings extends Component {
     this.displayListing = this.displayListing.bind(this)
   }
 
+  //display all listings in grid
   loopListings () {
     var {listingData} = this.props
 
@@ -23,7 +25,7 @@ export default class Listings extends Component {
 
         // NORMAL BOX VIEW
         return (
-          <div className="col-md-3" key={index}>
+          <div className="col-lg-3 col-md-6 col-sm-12" key={index}>
             <div className="listing" >
               <div className="listing-img" style={{background: `url("${listing.img}") no-repeat center center`}}>
                 <span className="address">{listing.address}</span>
@@ -61,7 +63,7 @@ export default class Listings extends Component {
 
         // WIDE VIEW
         return (
-          <div className="col-md-12 col-lg-6" key={index}>
+          <div className="col-sm-12 col-md-6 col-lg-6" key={index}>
             <div className="listing" >
               <div className="listing-img" style={{background: `url("${listing.img}") no-repeat center center`}}>
                 <span className="address">{listing.address}</span>
@@ -98,6 +100,7 @@ export default class Listings extends Component {
     })
   }
 
+  //display single listing
   displayListing(listing) {
   return (
     <section id="listings">

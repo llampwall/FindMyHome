@@ -37,3 +37,27 @@ header {
     }
   }
 }
+@media only screen and (max-width: 610px) {
+  header {
+    display: block;
+    text-align: center;
+
+    .logo,
+    nav {
+      float: none;
+    }
+
+    nav {
+      padding: 10px 0;
+
+      a {
+        padding: 0 5px;
+        font-size: 0.8rem;
+
+        &.register-btn {
+          padding: 5px 8px;
+        }
+      }
+    }
+  }
+}
